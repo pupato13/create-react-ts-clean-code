@@ -5,6 +5,43 @@
     },
     "rules": {
         "@typescript-eslint/consistent-type-definitions": "off",
-        "@typescript-eslint/strict-boolean-expressions": "off"
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "prettier/prettier": "error",
+        "indent": "off",
+        "@typescript-eslint/indent": [
+            "error",
+            4,
+            {
+                "ignoredNodes": [
+                    "ArrowFunctionExpression[params]",
+                    "ArrowFunctionExpression[params] TSPropertySignature"
+                ]
+            }
+        ],
+        "@typescript-eslint/method-signature-style": "off",
+        "linebreak-style": ["error", "unix"],
+        "semi": "off",
+        "@typescript-eslint/semi": "off",
+        "comma-dangle": ["error", "only-multiline"],
+        "@typescript-eslint/no-explicit-any": "off",
+        "quotes": ["error", "double"],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            {
+                "allowExpressions": true
+            }
+        ],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": "interface",
+                "format": ["PascalCase"],
+                "custom": {
+                    "regex": "^I[A-Z]",
+                    "match": true
+                }
+            }
+        ]
     }
 }

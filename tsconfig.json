@@ -10,10 +10,11 @@
         "baseUrl": "src",
         "allowJs": true,
         "skipLibCheck": true,
-        "allowConsistentCasingInFileNames": true,
+        "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true
     },
-    "include": ["src"]
+    "include": ["src"],
+    "exclude": []
 }
