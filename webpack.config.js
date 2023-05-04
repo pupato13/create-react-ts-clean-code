@@ -47,7 +47,7 @@ module.exports = {
         devMiddleware: {
             writeToDisk: true,
         },
-        port: 3000,
+        port: 3009,
     },
     externals: {
         react: "React",
