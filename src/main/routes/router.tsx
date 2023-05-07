@@ -5,7 +5,7 @@ import PrivateRoute from "@/presentation/components/private-route/private-route"
 
 import { makeRemoteAuthentication } from "@/main/factories/usecases/authentication/remote-authentication-factory";
 import { makeLoginValidation } from "@/main/factories/pages/login/login-validation-factory";
-import { Login } from "@/presentation/pages";
+import { Login, Teste } from "@/presentation/pages";
 import { MakeLogin } from "../factories/pages";
 
 const Router: React.FC = () => {
@@ -13,6 +13,9 @@ const Router: React.FC = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MakeLogin />} />
+                <Route path="/teste" element={<Teste />} />
+
+                {/* https://stackoverflow.com/questions/69864165/error-privateroute-is-not-a-route-component-all-component-children-of-rou */}
                 <PrivateRoute path="/dashboard" element={<MakeLogin />} />
             </Routes>
         </BrowserRouter>

@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Login: React.FC<Props> = ({ validation, authentication }) => {
-    const { setCurrentAccount } = useContext(ApiContext);
+    // const { setCurrentAccount } = useContext(ApiContext);
     const navigate = useNavigate();
     const [state, setState] = useState({
         isLoading: false,
@@ -65,7 +65,7 @@ const Login: React.FC<Props> = ({ validation, authentication }) => {
                 password: state.password,
             });
 
-            setCurrentAccount(account);
+            // setCurrentAccount(account);
 
             navigate("/");
         } catch (error) {
