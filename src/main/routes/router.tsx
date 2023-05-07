@@ -9,14 +9,24 @@ import { Login, Teste } from "@/presentation/pages";
 import { MakeLogin } from "../factories/pages";
 
 const Router: React.FC = () => {
+    const opre = Teste;
+
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MakeLogin />} />
-                <Route path="/teste" element={<Teste />} />
+                {/* <Route path="/teste" element={<Teste />} /> */}
 
                 {/* https://stackoverflow.com/questions/69864165/error-privateroute-is-not-a-route-component-all-component-children-of-rou */}
-                <PrivateRoute path="/dashboard" element={<MakeLogin />} />
+                {/* <PrivateRoute path="/dashboard" element={<MakeLogin />} /> */}
+                <Route
+                    path="/dashboard"
+                    element={
+                        <PrivateRoute>
+                            <Teste />
+                        </PrivateRoute>
+                    }
+                />
             </Routes>
         </BrowserRouter>
     );
