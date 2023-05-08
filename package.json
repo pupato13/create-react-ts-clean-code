@@ -1,20 +1,31 @@
 {
     "name": "create-react-ts-clean-code",
-    "version": "0.1.0",
-    "description": "",
+    "version": "0.1.2",
+    "description": "A React clean code starter from scratch using TypeScript, Webpack, Jest and Axios",
+    "bin": "./bin/generate-app.js",
+    "author": "Diego Pupato",
     "main": "index.js",
     "scripts": {
         "dev:base": "webpack-dev-server --config webpack.dev.js",
         "dev": "npm run dev:base -- --open",
-        "opre": "webpack-cli serve --open --mode development --config webpack.dev.js",
+        "start": "webpack-cli serve --open --mode development --config webpack.dev.js",
         "test": "cross-env NODE_ICU_DATA=node_modules/full-icu jest --passWithNoTests --no-cache --runInBand",
         "test:watch": "npm test -- --watch",
         "test:staged": "npm test -- --findRelatedTests",
         "test:ci": "npm test -- --coverage"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "directory": "https://github.com/pupato13/create-react-ts-clean-code"
+    },
+    "keywords": [
+        "react",
+        "typescript",
+        "clean code",
+        "webpack",
+        "jest"
+    ],
+    "license": "MIT",
     "devDependencies": {
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^14.0.0",
