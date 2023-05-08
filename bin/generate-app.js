@@ -1,29 +1,53 @@
 #!/usr/bin/env node
 const { execSync } = require("child_process");
+const path = require("path");
+const fs = require("fs");
 
-const runCommand = (command) => {
-    try {
-        execSync(`${command}`, { stdio: "inherit" });
-        return true;
-    } catch (error) {
-        console.error(`Failed to execute ${command}`, error);
-        return false;
+if (process.argv.length < 3) {
+    console.log("You have to provide a name to your app.");
+    console.log("For example :");
+    console.log("    npx create-my-boilerplate my-app");
+    process.exit(1);
+}
+
+const projectName = process.argv[2];
+const currentPath = process.cwd();
+const projectPath = path.join(currentPath, projectName);
+const git_repo = "https://github.com/pupato13/create-react-ts-clean-code";
+
+try {
+    fs.mkdirSync(projectPath);
+} catch (err) {
+    if (err.code === "EEXIST") {
+        console.log(
+            `The file ${projectName} already exist in the current directory, please give it another name.`
+        );
+    } else {
+        console.log(error);
     }
-};
+    process.exit(1);
+}
 
-const repoName = process.argv[2];
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/pupato13/create-react-ts-clean-code ${repoName}`;
-const installDepsCommand = `cd ${repoName} && npm install`;
+async function main() {
+    try {
+        console.log("Downloading files...");
+        execSync(`git clone --depth 1 ${git_repo} ${projectPath}`);
 
-console.log(`Cloning the repository with name ${repoName}`);
-const checkedOut = runCommand(gitCheckoutCommand);
+        process.chdir(projectPath);
 
-if (!checkedOut) process.exit(-1);
+        console.log("Installing dependencies...");
+        execSync("npm install");
 
-console.log(`Installing dependencies for ${repoName}`);
-const installedDeps = runCommand(installDepsCommand);
+        console.log("Removing useless files");
+        execSync("npx rimraf ./.git");
+        fs.rmdirSync(path.join(projectPath, "bin"), { recursive: true });
 
-if (!installedDeps) process.exit(-1);
-
-console.log("Congrats! You are ready. Follow the following command to start");
-console.log(`cd ${repoName} && npm run start`);
+        console.log(
+            "Congrats! You are ready. Follow the following command to start"
+        );
+        console.log(`cd ${projectName} && npm run start`);
+    } catch (error) {
+        console.log(error);
+    }
+}
+main();
